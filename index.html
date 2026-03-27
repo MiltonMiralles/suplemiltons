@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Suplemiltons | Suplementos Deportivos - Rosario</title>
 <meta name="description" content="Suplementos deportivos originales en Rosario. Proteinas ENA, Star Nutrition, Creatinas. Envios a todo Rosario. Pedidos por WhatsApp.">
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -54,15 +55,15 @@
   }
 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, var(--accent-blue), #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 40px;
+    width: auto;
   }
 
   .nav-links {
@@ -151,6 +152,12 @@
     color: var(--text-muted);
     text-transform: uppercase;
     margin-bottom: 30px;
+  }
+
+  .hero-logo {
+    width: clamp(280px, 50vw, 500px);
+    height: auto;
+    margin-bottom: 20px;
   }
 
   .hero-title {
@@ -759,7 +766,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">SUPLEMILTONS</a>
+  <a href="#" class="nav-logo"><img src="logo.png" alt="Suplemiltons"></a>
   <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#productos">Productos</a></li>
@@ -773,7 +780,8 @@
 <section class="hero">
   <div class="hero-content">
     <div class="hero-badge">Rosario, Santa Fe</div>
-    <h1 class="hero-title">SUPLEMILTONS</h1>
+    <img src="logo.png" alt="Suplemiltons" class="hero-logo">
+    <h1 class="hero-title" style="display:none">SUPLEMILTONS</h1>
     <p class="hero-sub">Suplementos deportivos originales | Rosario</p>
     <div class="hero-buttons">
       <a href="https://wa.me/5491162040230?text=Hola!%20Quiero%20ver%20el%20catalogo%20de%20suplementos" class="btn btn-primary" target="_blank">&#128172; Pedir por WhatsApp</a>
@@ -1124,6 +1132,7 @@
 
 <!-- FOOTER -->
 <footer>
+  <img src="logo.png" alt="Suplemiltons" style="height:30px; margin-bottom:10px; opacity:0.5;">
   <p>SUPLEMILTONS &copy; 2026 | Suplementos deportivos originales</p>
 </footer>
 
