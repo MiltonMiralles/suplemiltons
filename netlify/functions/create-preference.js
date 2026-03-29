@@ -26,6 +26,7 @@ exports.handler = async (event) => {
       items,
       payer: {
         name: order.customer.name,
+        email: order.customer.email,
         phone: { number: order.customer.phone }
       },
       back_urls: {

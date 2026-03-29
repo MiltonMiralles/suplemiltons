@@ -1782,6 +1782,11 @@
       </div>
 
       <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="coEmail" placeholder="tu@email.com" required>
+      </div>
+
+      <div class="form-group">
         <label>Direccion de entrega</label>
         <input type="text" id="coAddress" placeholder="Calle, numero, piso (Rosario)" required>
       </div>
@@ -2008,10 +2013,11 @@ function selectPayment(el) {
 async function submitOrder() {
   const name = document.getElementById('coName').value.trim();
   const phone = document.getElementById('coPhone').value.trim();
+  const email = document.getElementById('coEmail').value.trim();
   const address = document.getElementById('coAddress').value.trim();
   const notes = document.getElementById('coNotes').value.trim();
 
-  if (!name || !phone || !address) {
+  if (!name || !phone || !address || !email) {
     showToast('Completa todos los campos obligatorios');
     return;
   }
@@ -2019,7 +2025,7 @@ async function submitOrder() {
   const order = {
     items: cart.map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty })),
     total: getCartTotal(),
-    customer: { name, phone, address, notes },
+    customer: { name, phone, email, address, notes },
     payment: selectedPayment,
     date: new Date().toISOString()
   };
