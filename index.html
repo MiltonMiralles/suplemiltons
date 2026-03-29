@@ -2078,8 +2078,13 @@ async function submitOrder() {
     date: new Date().toISOString()
   };
 
+  // Guardar pedido antes de redirigir (para recuperar datos despues del pago)
+  localStorage.setItem('suplemiltons_last_order', JSON.stringify(order));
+
   if (selectedPayment === 'mercadopago') {
-    // Try MercadoPago integration
+    // Notificar al dueno por WhatsApp ANTES de redirigir a MP
+    notifyOwner(order, 'MercadoPago (pendiente de pago)');
+
     try {
       const btn = document.getElementById('checkoutPayBtn');
       btn.textContent = 'Procesando...';
@@ -2093,16 +2098,17 @@ async function submitOrder() {
 
       if (res.ok) {
         const data = await res.json();
+        // Limpiar carrito antes de redirigir
+        cart = [];
+        saveCart();
         window.location.href = data.init_point;
         return;
       } else {
-        // Fallback to WhatsApp
         btn.textContent = 'Pagar con MercadoPago';
         btn.disabled = false;
         sendOrderWhatsApp(order);
       }
     } catch {
-      // Fallback to WhatsApp if function not available
       sendOrderWhatsApp(order);
     }
   } else {
@@ -2159,6 +2165,58 @@ window.addEventListener('scroll', () => {
   }
   scrollBtn.classList.toggle('visible', window.scrollY > 600);
 });
+
+// Notificar al dueno via Netlify Function (no bloquea al cliente)
+function notifyOwner(order, paymentLabel) {
+  const msg = `*NUEVO PEDIDO - Suplemiltons*\n\n` +
+    `*Cliente:* ${order.customer.name}\n` +
+    `*Tel:* ${order.customer.phone}\n` +
+    `*Email:* ${order.customer.email}\n` +
+    `*Direccion:* ${order.customer.address}\n` +
+    (order.customer.notes ? `*Notas:* ${order.customer.notes}\n` : '') +
+    `\n*Productos:*\n` +
+    order.items.map(i => `- ${i.qty}x ${i.name} (${formatPrice(i.price * i.qty)})`).join('\n') +
+    `\n\n*Total: ${formatPrice(order.total)}*\n` +
+    `*Pago:* ${paymentLabel}`;
+
+  // Enviar notificacion via function (fire and forget)
+  fetch('/.netlify/functions/notify-order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: msg, order })
+  }).catch(() => {});
+}
+
+// Check si volvemos de MercadoPago
+(function checkPaymentReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const pago = params.get('pago');
+  if (!pago) return;
+
+  // Limpiar URL
+  window.history.replaceState({}, '', '/');
+
+  const lastOrder = JSON.parse(localStorage.getItem('suplemiltons_last_order') || 'null');
+
+  if (pago === 'ok') {
+    showToast('Pago confirmado! Te contactamos para coordinar la entrega');
+    // Limpiar carrito y pedido guardado
+    cart = [];
+    saveCart();
+    localStorage.removeItem('suplemiltons_last_order');
+
+    if (lastOrder) {
+      notifyOwner(lastOrder, 'MercadoPago (PAGADO)');
+    }
+  } else if (pago === 'error') {
+    showToast('El pago no se pudo procesar. Intenta de nuevo.');
+  } else if (pago === 'pendiente') {
+    showToast('Pago pendiente. Te avisamos cuando se confirme.');
+    if (lastOrder) {
+      notifyOwner(lastOrder, 'MercadoPago (PENDIENTE)');
+    }
+  }
+})();
 
 // Init cart on load
 updateCartUI();
