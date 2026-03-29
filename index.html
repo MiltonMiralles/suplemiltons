@@ -173,6 +173,14 @@
     cursor: pointer;
   }
 
+  .nav-right-mobile {
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-cart { display: none; }
+
   /* ====== HERO ====== */
   .hero {
     min-height: 100vh;
@@ -1342,6 +1350,8 @@
       border-bottom: 1px solid var(--border);
     }
     .menu-toggle { display: block; }
+    .nav-right-mobile { display: flex; }
+    .mobile-cart { display: flex; font-size: 24px; }
     .hero { padding: 100px 20px 60px; min-height: auto; padding-top: 160px; }
     .promo-banner { margin-top: 75px; font-size: 11px; padding: 8px 15px; }
     .wa-float { bottom: 20px; right: 15px; width: 55px; height: 55px; font-size: 26px; }
@@ -1362,7 +1372,10 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo"><img src="logo.png" alt="Suplemiltons"></a>
-  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <div class="nav-right-mobile">
+    <button class="nav-cart-btn mobile-cart" onclick="toggleCart()">&#128722;<span class="cart-badge cart-badge-mobile" id="cartBadgeMobile"></span></button>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
   <ul class="nav-links">
     <li><a href="#productos">Productos</a></li>
     <li><a href="#combos">Combos</a></li>
@@ -1940,13 +1953,16 @@ function getCartCount() {
 }
 
 function updateCartUI() {
-  const badge = document.getElementById('cartBadge');
+  const badges = [document.getElementById('cartBadge'), document.getElementById('cartBadgeMobile')];
   const count = getCartCount();
-  badge.textContent = count > 0 ? count : '';
-  if (count > 0) {
-    badge.classList.add('bump');
-    setTimeout(() => badge.classList.remove('bump'), 300);
-  }
+  badges.forEach(badge => {
+    if (!badge) return;
+    badge.textContent = count > 0 ? count : '';
+    if (count > 0) {
+      badge.classList.add('bump');
+      setTimeout(() => badge.classList.remove('bump'), 300);
+    }
+  });
 
   const itemsEl = document.getElementById('cartItems');
   const footerEl = document.getElementById('cartFooter');
