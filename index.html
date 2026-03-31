@@ -684,6 +684,26 @@
     margin-bottom: 12px;
   }
 
+  .combo-imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  .combo-imgs img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    padding: 6px;
+  }
+  .combo-imgs .combo-plus {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent-blue);
+  }
   .combo-name {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 26px;
@@ -1776,6 +1796,11 @@
 
     <div class="combo-card" data-combo-id="combo-clasico" data-combo-items='[{"id":"ena-tm-vai","name":"ENA True Made Whey - Vainilla","price":68000,"img":"https://www.enasport.com/cdn/shop/files/TMWP2lb-Va_2.png?v=1769005779&width=600"},{"id":"ena-crea","name":"ENA Creatina Micronizada 300g","price":27000,"img":"https://www.enasport.com/cdn/shop/files/CreaN300Mono.png?v=1765981838&width=600"}]'>
       <div class="combo-badge">Mas vendido</div>
+      <div class="combo-imgs">
+        <img src="https://www.enasport.com/cdn/shop/files/TMWP2lb-Va_2.png?v=1769005779&width=600" alt="ENA True Made Whey" loading="lazy">
+        <span class="combo-plus">+</span>
+        <img src="https://www.enasport.com/cdn/shop/files/CreaN300Mono.png?v=1765981838&width=600" alt="ENA Creatina" loading="lazy">
+      </div>
       <div class="combo-name">COMBO CLASICO</div>
       <div class="combo-desc">ENA True Made Whey 2lb<br>+ Creatina ENA 300g</div>
       <div class="combo-price">$95.000</div>
@@ -1785,6 +1810,11 @@
 
     <div class="combo-card" data-combo-id="combo-star" data-combo-items='[{"id":"star-pw-vai","name":"Star Platinum Whey - Vainilla","price":57000,"img":"https://starnutrition.com.ar/cdn/shop/files/PWP-2Lb-Vainilla.png?v=1718218508&width=600"},{"id":"star-crea","name":"Star Creatina Monohidrato 300g","price":28000,"img":"https://starnutrition.com.ar/cdn/shop/files/Creatine_300.png?v=1719589258&width=600"}]'>
       <div class="combo-badge">Promo</div>
+      <div class="combo-imgs">
+        <img src="https://starnutrition.com.ar/cdn/shop/files/PWP-2Lb-Vainilla.png?v=1718218508&width=600" alt="Star Platinum Whey" loading="lazy">
+        <span class="combo-plus">+</span>
+        <img src="https://starnutrition.com.ar/cdn/shop/files/Creatine_300.png?v=1719589258&width=600" alt="Star Creatina" loading="lazy">
+      </div>
       <div class="combo-name">COMBO STAR</div>
       <div class="combo-desc">Star Platinum Whey 2lb<br>+ Creatina Star 300g</div>
       <div class="combo-price">$85.000</div>
@@ -1794,6 +1824,13 @@
 
     <div class="combo-card" data-combo-id="combo-full" data-combo-items='[{"id":"ena-tm-vai","name":"ENA True Made Whey - Vainilla","price":68000,"img":"https://www.enasport.com/cdn/shop/files/TMWP2lb-Va_2.png?v=1769005779&width=600"},{"id":"star-crea","name":"Star Creatina Monohidrato 300g","price":25000,"img":"https://starnutrition.com.ar/cdn/shop/files/Creatine_300.png?v=1719589258&width=600"},{"id":"star-col-lim","name":"Star Collagen Hidrolizado - Limon","price":19000,"img":"https://starnutrition.com.ar/cdn/shop/files/STANUT2030BCL.png?v=1719509920&width=600"}]'>
       <div class="combo-badge">Premium</div>
+      <div class="combo-imgs">
+        <img src="https://www.enasport.com/cdn/shop/files/TMWP2lb-Va_2.png?v=1769005779&width=600" alt="ENA True Made Whey" loading="lazy">
+        <span class="combo-plus">+</span>
+        <img src="https://starnutrition.com.ar/cdn/shop/files/Creatine_300.png?v=1719589258&width=600" alt="Star Creatina" loading="lazy">
+        <span class="combo-plus">+</span>
+        <img src="https://starnutrition.com.ar/cdn/shop/files/STANUT2030BCL.png?v=1719509920&width=600" alt="Star Collagen" loading="lazy">
+      </div>
       <div class="combo-name">COMBO FULL</div>
       <div class="combo-desc">ENA True Made Whey 2lb<br>+ Creatina Star 300g<br>+ Collagen Star 210g</div>
       <div class="combo-price">$112.000</div>
