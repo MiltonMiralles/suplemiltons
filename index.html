@@ -550,6 +550,42 @@
     color: var(--text-muted);
   }
 
+  .prod-desc {
+    margin-bottom: 14px;
+  }
+  .prod-desc-toggle {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.2s;
+  }
+  .prod-desc-toggle:hover { opacity: 0.8; }
+  .prod-desc-toggle .arrow { transition: transform 0.3s; font-size: 10px; }
+  .prod-desc-toggle.open .arrow { transform: rotate(180deg); }
+  .prod-desc-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    padding: 0;
+  }
+  .prod-desc-text.open {
+    max-height: 300px;
+    padding-top: 8px;
+  }
+  .prod-desc-text strong {
+    color: var(--text-main);
+    font-size: 11px;
+  }
   .prod-bottom {
     display: flex;
     justify-content: space-between;
@@ -1449,6 +1485,13 @@
         <span class="nutri">30 Servicios</span>
         <span class="nutri">BCAA</span>
       </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Proteina de suero de alta calidad (Isolate + Concentrate) ideal para ganar masa muscular, recuperarte despues del entrenamiento y completar tu requerimiento proteico diario.<br>
+          <strong>Como tomarlo:</strong> Mezclar 1 scoop (31g) con 200-250ml de agua fria o leche. Tomar 1-2 veces al dia, preferentemente despues de entrenar o entre comidas.
+        </div>
+      </div>
       <div class="prod-bottom">
         <div>
           <div class="prod-price ena">$68.000 <span>c/u</span></div>
@@ -1474,6 +1517,13 @@
         <span class="nutri">24g Proteina</span>
         <span class="nutri">30 Servicios</span>
         <span class="nutri">BCAA</span>
+      </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Proteina de suero de alta calidad (Isolate + Concentrate) ideal para ganar masa muscular, recuperarte despues del entrenamiento y completar tu requerimiento proteico diario.<br>
+          <strong>Como tomarlo:</strong> Mezclar 1 scoop (31g) con 200-250ml de agua fria o leche. Tomar 1-2 veces al dia, preferentemente despues de entrenar o entre comidas.
+        </div>
       </div>
       <div class="prod-bottom">
         <div>
@@ -1501,6 +1551,13 @@
         <span class="nutri">28 Servicios</span>
         <span class="nutri">Low Fat</span>
       </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Proteina de suero concentrada baja en grasa, ideal para aumentar masa muscular, mejorar la recuperacion post-entreno y complementar tu dieta con proteina de alta calidad.<br>
+          <strong>Como tomarlo:</strong> Mezclar 1 scoop (32g) con 200-300ml de agua o leche. Tomar 1-2 veces al dia, idealmente despues de entrenar y/o a media manana.
+        </div>
+      </div>
       <div class="prod-bottom">
         <div>
           <div class="prod-price star">$57.000 <span>c/u</span></div>
@@ -1527,6 +1584,13 @@
         <span class="nutri">28 Servicios</span>
         <span class="nutri">Low Fat</span>
       </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Proteina de suero concentrada baja en grasa, ideal para aumentar masa muscular, mejorar la recuperacion post-entreno y complementar tu dieta con proteina de alta calidad.<br>
+          <strong>Como tomarlo:</strong> Mezclar 1 scoop (32g) con 200-300ml de agua o leche. Tomar 1-2 veces al dia, idealmente despues de entrenar y/o a media manana.
+        </div>
+      </div>
       <div class="prod-bottom">
         <div>
           <div class="prod-price star">$57.000 <span>c/u</span></div>
@@ -1551,6 +1615,13 @@
       <div class="prod-nutri">
         <span class="nutri">5g por servicio</span>
         <span class="nutri">60 Servicios</span>
+      </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> La creatina es el suplemento mas estudiado del mundo. Aumenta la fuerza, potencia y rendimiento en el gimnasio. Ayuda a ganar masa muscular y mejora la recuperacion entre series.<br>
+          <strong>Como tomarlo:</strong> Tomar 5g (1 scoop) al dia con agua o jugo, todos los dias (incluso los de descanso). No necesita fase de carga. Mejor despues de entrenar o con una comida.
+        </div>
       </div>
       <div class="prod-bottom">
         <div>
@@ -1577,6 +1648,13 @@
         <span class="nutri">5g por servicio</span>
         <span class="nutri">60 Servicios</span>
       </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> La creatina es el suplemento mas estudiado del mundo. Aumenta la fuerza, potencia y rendimiento en el gimnasio. Ayuda a ganar masa muscular y mejora la recuperacion entre series.<br>
+          <strong>Como tomarlo:</strong> Tomar 5g (1 scoop) al dia con agua o jugo, todos los dias (incluso los de descanso). No necesita fase de carga. Mejor despues de entrenar o con una comida.
+        </div>
+      </div>
       <div class="prod-bottom">
         <div>
           <div class="prod-price star">$34.000 <span>c/u</span></div>
@@ -1601,6 +1679,13 @@
       <div class="prod-nutri">
         <span class="nutri">10g Colageno</span>
         <span class="nutri">21 Servicios</span>
+      </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Colageno hidrolizado con Vitamina C para mejorar la salud de piel, cabello, unas y articulaciones. Ayuda a prevenir lesiones y mantener la elasticidad de la piel.<br>
+          <strong>Como tomarlo:</strong> Disolver 1 scoop (10g) en 200ml de agua fria. Tomar 1 vez al dia, preferentemente en ayunas o antes de dormir para mejor absorcion.
+        </div>
       </div>
       <div class="prod-bottom">
         <div>
@@ -1627,6 +1712,13 @@
         <span class="nutri">10g Colageno</span>
         <span class="nutri">21 Servicios</span>
       </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Colageno hidrolizado con Vitamina C para mejorar la salud de piel, cabello, unas y articulaciones. Ayuda a prevenir lesiones y mantener la elasticidad de la piel.<br>
+          <strong>Como tomarlo:</strong> Disolver 1 scoop (10g) en 200ml de agua fria. Tomar 1 vez al dia, preferentemente en ayunas o antes de dormir para mejor absorcion.
+        </div>
+      </div>
       <div class="prod-bottom">
         <div>
           <div class="prod-price star">$19.500 <span>c/u</span></div>
@@ -1652,6 +1744,13 @@
         <span class="nutri">200mg Cafeina</span>
         <span class="nutri">Beta-Alanina</span>
         <span class="nutri">30 Servicios</span>
+      </div>
+      <div class="prod-desc">
+        <button class="prod-desc-toggle" onclick="toggleDesc(this)">Para que sirve y como tomarlo <span class="arrow">▼</span></button>
+        <div class="prod-desc-text">
+          <strong>Para que sirve:</strong> Pre-entreno con cafeina y beta-alanina que te da energia, foco y rendimiento explosivo durante el entrenamiento. Ideal para dias de alta intensidad o cuando necesitas un empujon extra.<br>
+          <strong>Como tomarlo:</strong> Mezclar 1 scoop (8g) con 200ml de agua fria. Tomar 20-30 minutos antes de entrenar. No consumir despues de las 18hs si sos sensible a la cafeina. No superar 1 scoop al dia.
+        </div>
       </div>
       <div class="prod-bottom">
         <div>
@@ -1880,6 +1979,12 @@ function saveCart() {
 
 function formatPrice(n) {
   return '$' + n.toLocaleString('es-AR');
+}
+
+function toggleDesc(btn) {
+  btn.classList.toggle('open');
+  const text = btn.nextElementSibling;
+  text.classList.toggle('open');
 }
 
 function addToCart(btn) {
